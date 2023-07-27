@@ -1,9 +1,9 @@
 *** Settings ***
 
-Library  ./test.py
 Library  ./kutsut.py
 Library  SeleniumLibrary
 Library  Collections
+Library  OperatingSystem
 
 *** Test Cases ***
 	
@@ -80,7 +80,9 @@ Mennään Duunitorin sivuille
     Sleep    10
 
 lista työpaikoista
-    ${ListaTYö}    työpaikat
+    ${ListaTYö}    työpaikat_tpt
+    ${työpaikat Duunitorista}    työpaikat_duunitori    Python
+    Create File    Duunitorin_tyot.html    ${työpaikat Duunitorista}
 
 
 *** Keywords ***
